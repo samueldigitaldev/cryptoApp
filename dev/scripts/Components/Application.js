@@ -33,9 +33,7 @@ export default class Application extends React.Component{
   render() {
     return(
     <div className="widget">
-      <div onClick={() => this.callApi()}>
-        Click here to call API 
-      </div>
+      
     </div>
     );
   }
