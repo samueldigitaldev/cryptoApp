@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Header from "./Components/Header";
-import Application from "./Components/Application"
-
-
+import Calculations from "./Components/Calculations";
 
 class Parameters extends React.Component{
     constructor() {
         super();
-      
+
     }
 
     render() {
@@ -63,7 +61,10 @@ class Parameters extends React.Component{
 				var widgetsNode = document.getElementsByClassName("widget"+position);
 
 				var dataNode = document.createElement("div");
-				dataNode.innerHTML = "Lowest Ask: " + response[3] + "<br> Last Trade: " + response[7] + "<br> Highest Bid: " + response[1];
+				dataNode.innerHTML = 
+				"Bid Rate: " + response[1] + 
+				"<br> Last Trade: " + response[7] 
+				+ "<br> Ask Rate: " + response[3];
 
 				widgetsNode[0].innerHTML = dataNode.innerHTML;
 	        	
@@ -84,6 +85,8 @@ class Parameters extends React.Component{
 
 
 ReactDOM.render(<Header />, document.getElementById('header'));
-ReactDOM.render(<Parameters />, document.getElementById('parameters'));
+ReactDOM.render(<Parameters />, document.getElementById('app'));
+ReactDOM.render(<Calculations />, document.getElementById('calculations'));
+
 
 

@@ -11,6 +11,7 @@ body{
 	width: 75%;
 	margin: 0 auto;
 	background-color: black;
+	font-family: 'Saira Semi Condensed', sans-serif;
 
 }
 
@@ -19,10 +20,15 @@ body{
 	color: white;
 }
 
+#app{
+	width: 50%;
+	float: left;
+}
+
 #widget{
 	display: flex;
 	flex-wrap: wrap;
-	width: 50%;
+
 }
 
 #widget div{
@@ -34,6 +40,7 @@ body{
 	text-align: left;
 	margin-bottom: 10px;
 	color: green;
+	border-bottom: 1px solid white;
 
 }
 
@@ -44,7 +51,41 @@ body{
 	color: white;
 	float: left;
 	background-color: black;
+	text-align: right;
+	font-size: 20px;
+	font-weight: bold;
+	letter-spacing: 3px;
 
+
+}
+
+#calculations{
+	width: 50%;
+	float: left;
+	color: white;
+	margin-top: -25px;
+
+}
+
+#profitOrLoss, #bidAskDifference{
+	display: inline;
+}
+
+.notProfitable{
+	color: red;
+}
+
+.profitable{
+	color: green;
+}
+
+#arbitrageTicker{
+	
+}
+
+
+h2{
+	margin-top: -25px;
 }
 
 
