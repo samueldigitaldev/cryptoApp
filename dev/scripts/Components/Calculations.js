@@ -52,6 +52,7 @@ export default class Calculations extends React.Component{
 				var lastTrade = response[7];
 				var bidRate = response[1];
 				currencyInfoObject[currencyName] = [bidRate, lastTrade, askRate];
+
 /*END OF PUSH TICKER INFORMATION INTO OBJECTS AND ARRAYS*/
 
 /*CALCULATION OF ARBITRAGE*/
@@ -155,9 +156,8 @@ export default class Calculations extends React.Component{
 
 					for (var arrayIndex = 1; arrayIndex < tradePairThree.options.length; arrayIndex++){
 						
-						noMatchArray.toString();
+						var noMatchArrayString = noMatchArray.toString();
 						var matchInTradePairThree = tradePairThree.options[arrayIndex].value.indexOf(noMatchArray);
-			
 
 						if (matchInTradePairThree < 0){
 						tradePairThree.options[arrayIndex].style.display="none";
@@ -172,8 +172,6 @@ export default class Calculations extends React.Component{
 				}
 			}
 		});
-
-		
 
 			tradePairThree.addEventListener("change", function(){
 				tradePairThreeSelected = this.value;
@@ -195,12 +193,83 @@ export default class Calculations extends React.Component{
 				tradePairThree.disabled = true;
 			}
 
+			var tradePairOneNode = document.getElementById("tradePairOneNode");
+			var tradePairTwoNode = document.getElementById("tradePairTwoNode");
+			var tradePairThreeNode = document.getElementById("tradePairThreeNode");
+
+			if(tradePairOneSelected in currencyInfoObject){
+				var tradePairOneTicker = currencyInfoObject[tradePairOneSelected];
+				tradePairOneNode.innerHTML = "<div>" + tradePairOneSelected +"</div>" +
+				"Bid Rate: " + tradePairOneTicker[0]
+				+ "<br> Ask Rate: " + tradePairOneTicker[2];
+			}
+
+			if(tradePairTwoSelected in currencyInfoObject){
+				var tradePairTwoTicker = currencyInfoObject[tradePairTwoSelected];
+				tradePairTwoNode.innerHTML = "<div>" + tradePairTwoSelected +"</div>" +
+				"Bid Rate: " + tradePairTwoTicker[0] 
+				+ "<br> Ask Rate: " + tradePairTwoTicker[2];
+			}
+
+			if(tradePairThreeSelected in currencyInfoObject){
+				var tradePairThreeTicker = currencyInfoObject[tradePairThreeSelected];
+				tradePairThreeNode.innerHTML = "<div>" + tradePairThreeSelected +"</div>" +"Bid Rate: " + tradePairThreeTicker[0]
+				+ "<br> Ask Rate: " + tradePairThreeTicker[2];
+			}
+
+
 /*END OF TRADING PAIR OPTIONS*/
 
 /*START OF TRIANGULAR ARBITRAGE*/
 
 
 
+			var selectedPairs = document.getElementById("tradePairOne").value + document.getElementById("tradePairTwo").value + document.getElementById("tradePairThree").value;
+
+			var subStringsArray = [];
+
+			for(var subStrings = 0; subStrings < selectedPairs.length; subStrings+=3){
+				subStringsArray.push(selectedPairs.substring(subStrings,subStrings+3));
+			}
+
+			var triangularArbitrageCalculationsNode = document.getElementById("triangularArbitrageCalculations");
+
+			triangularArbitrageCalculationsNode.innerHTML = "<div>" + "Given $10,000 USD" + "</div>";
+
+			var initialUSD = 10000;
+			
+				if(subStringsArray[1] === "USD"){
+					var convertUSD = initialUSD/tradePairOneTicker[2]
+					console.log(convertUSD);
+
+					if(subStringsArray[0]===subStringsArray[2]){
+
+					}
+
+					if(subStringsArray[0]===subStringsArray[3]){
+
+					}
+					if(subStringsArray[0] === subStringsArray[4]){
+						
+					}
+					if(subStringsArray[0] === subStringsArray[5]){
+						var convertSecond = convertUSD/tradePairThreeTicker[2];
+
+						if(subStringsArray[1] === subStringsArray[2]){
+
+						}
+						if(subStringsArray[1] === subStringsArray[3]){
+							var convertThird = convertSecond*tradePairTwoTicker[0];
+
+						}
+
+					}
+
+
+
+
+
+				}
 
 
 
@@ -211,6 +280,62 @@ export default class Calculations extends React.Component{
 
 
 
+
+
+
+
+
+
+
+
+
+
+/*				if(subStringsArray[0] === subStringsArray[2]){
+
+					if(subStringsArray[3] === subStringsArray[4]){
+
+
+					}
+
+					if(subStringsArray[3] === subStringsArray[5]){
+
+					}
+					
+				}
+				if(subStringsArray[0] === subStringsArray[3]){
+					
+					if(subStringsArray[2] === subStringsArray[4]){
+
+					}
+
+					if(subStringsArray[2] === subStringsArray[5]){
+
+					}
+					
+				}
+
+				if(subStringsArray[1] === subStringsArray[2]){
+					if(subStringsArray[3] === subStringsArray[4]){
+
+					}
+					if(subStringsArray[3] === subStringsArray[5]){
+
+					}
+
+				}
+
+				if(subStringsArray[1] === subStringsArray[3]){
+					if(subStringsArray[2] === subStringsArray[4]){
+
+
+					}
+					if(subStringsArray[2] === subStringsArray[5]){
+
+					}
+					
+				}*/
+
+			
 
 /*END OF TRIANGULAR ARBITRAGE*/
 
@@ -270,7 +395,6 @@ export default class Calculations extends React.Component{
 				        <option value="ETHBTC">ETHBTC</option>        
 				        <option value="ETCUSD">ETCUSD</option>        
 				        <option value="ETCBTC">ETCBTC</option>
-				        <option value="BFXUSD">BFXUSD</option>
 				        <option value="RRTUSD">RRTUSD</option>
 				        <option value="RRTBTC">RRTBTC</option>
 				        <option value="ZECUSD">ZECUSD</option>
@@ -286,7 +410,6 @@ export default class Calculations extends React.Component{
 				        <option value="ETHBTC">ETHBTC</option>        
 				        <option value="ETCUSD">ETCUSD</option>        
 				        <option value="ETCBTC">ETCBTC</option>
-				        <option value="BFXUSD">BFXUSD</option>
 				        <option value="RRTUSD">RRTUSD</option>
 				        <option value="RRTBTC">RRTBTC</option>
 				        <option value="ZECUSD">ZECUSD</option>
@@ -302,12 +425,28 @@ export default class Calculations extends React.Component{
 				        <option value="ETHBTC">ETHBTC</option>        
 				        <option value="ETCUSD">ETCUSD</option>        
 				        <option value="ETCBTC">ETCBTC</option>
-				        <option value="BFXUSD">BFXUSD</option>
 				        <option value="RRTUSD">RRTUSD</option>
 				        <option value="RRTBTC">RRTBTC</option>
 				        <option value="ZECUSD">ZECUSD</option>
 				        <option value="ZECBTC">ZECBTC</option>
       				</select>
+
+      				<div id="tradePairOneNode">
+
+      				</div>
+      				<div id="tradePairTwoNode">
+
+      				</div>
+      				<div id="tradePairThreeNode">
+
+      				</div>
+
+      				<div id="triangularArbitrageCalculations">
+      					
+      				</div>
+
+
+
 			</div>
 			
 		);

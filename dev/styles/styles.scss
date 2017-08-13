@@ -78,6 +78,24 @@ h1 + p{
 
 }
 
+#tradePairOneNode, #tradePairTwoNode , #tradePairThreeNode {
+	float: left;
+	font-size: 15px;
+}
+
+#tradePairTwoNode{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#tradePairOneNode div, #tradePairTwoNode div, #tradePairThreeNode div{
+	font-size: 20px;
+	color: green;
+	font-weight: bold;
+	letter-spacing: 3px;
+
+} 
+
 #profitOrLoss, #highestBidAskDifference, #arbitrageTicker{
 	font-weight: bold;
 	font-size: 15px;
@@ -93,6 +111,7 @@ h1 + p{
 
 select{
 	margin-bottom: 10px;
+	width: 90%;
 }
 
 
@@ -102,11 +121,18 @@ h2{
 	font-size: 20px;
 }
 
+#triangularArbitrageCalculations{
+	clear: both;
+	display: block;
+	div{
+
+	}
+}
+
 
 h3{
 	clear:both;
 }
 
-select{
-	width: 80%;
-}
+
+
