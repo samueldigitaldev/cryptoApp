@@ -19,6 +19,7 @@ class Parameters extends React.Component{
 		var counter = 0;
 		var ws = new WebSocket("wss://api.bitfinex.com/ws");
 
+/*CALL WEBSOCKET*/
 		ws.onopen = () => {
 			for(var i = 0; i < bitfinexPairs.length; i++){
 				ws.send(JSON.stringify(
@@ -72,9 +73,12 @@ class Parameters extends React.Component{
 		    }
 		};
 
+/*END OF CALL WEBSOCKET*/
+
         return (
             <div>
             	<div id="widget">
+
 
 			    </div>
 
@@ -85,8 +89,8 @@ class Parameters extends React.Component{
 
 
 ReactDOM.render(<Header />, document.getElementById('header'));
-ReactDOM.render(<Parameters />, document.getElementById('app'));
 ReactDOM.render(<Calculations />, document.getElementById('calculations'));
+ReactDOM.render(<Parameters />, document.getElementById('app'));
 
 
 

@@ -15,6 +15,16 @@ body{
 
 }
 
+h1 + p{
+	font-size: 20px;
+	font-weight: bold;
+	text-align: right;
+	width: 50%;
+	float: right;
+	margin-right: 5%;
+
+}
+
 #header{
 	margin-bottom: 20px;
 	color: white;
@@ -33,6 +43,7 @@ body{
 
 #widget div{
 	width: 60%;
+	font-size: 18px;
 	flex-direction: row;
 	justify-content: flex-start;
 	flex-wrap: wrap;
@@ -67,8 +78,9 @@ body{
 
 }
 
-#profitOrLoss, #bidAskDifference{
-	display: inline;
+#profitOrLoss, #highestBidAskDifference, #arbitrageTicker{
+	font-weight: bold;
+	font-size: 15px;
 }
 
 .notProfitable{
@@ -79,16 +91,22 @@ body{
 	color: green;
 }
 
-#arbitrageTicker{
-	
+select{
+	margin-bottom: 10px;
 }
+
 
 
 h2{
 	margin-top: -25px;
+	font-size: 20px;
 }
 
 
 h3{
 	clear:both;
+}
+
+select{
+	width: 80%;
 }
