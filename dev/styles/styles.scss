@@ -80,7 +80,7 @@ h1 + p{
 
 #tradePairOneNode, #tradePairTwoNode , #tradePairThreeNode {
 	float: left;
-	font-size: 15px;
+	font-size: 18px;
 }
 
 #tradePairTwoNode{
@@ -89,7 +89,7 @@ h1 + p{
 }
 
 #tradePairOneNode div, #tradePairTwoNode div, #tradePairThreeNode div{
-	font-size: 20px;
+	font-size: 30px;
 	color: green;
 	font-weight: bold;
 	letter-spacing: 3px;
@@ -109,6 +109,11 @@ h1 + p{
 	color: green;
 }
 
+#profitability{
+	margin: 0 auto;
+
+}
+
 select{
 	margin-bottom: 10px;
 	width: 90%;
@@ -124,9 +129,15 @@ h2{
 #triangularArbitrageCalculations{
 	clear: both;
 	display: block;
-	div{
+	color: white;
+	margin-top: 20px;
+	width: 90%;
 
-	}
+
+}
+
+#triangularArbitrageCalculations{
+	
 }
 
 
