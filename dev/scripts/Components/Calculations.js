@@ -53,11 +53,9 @@ export default class Calculations extends React.Component{
 				var bidRate = response[1];
 				currencyInfoObject[currencyName] = [bidRate, lastTrade, askRate];
 
-
 /*END OF PUSH TICKER INFORMATION INTO OBJECTS AND ARRAYS*/
 
 /*CALCULATION OF ARBITRAGE*/
-
 
 				var currencyInfoArray = Object.keys(currencyInfoObject).map(function(key) {
 				  return [currencyInfoObject[key]];
@@ -85,9 +83,7 @@ export default class Calculations extends React.Component{
 						var highestArbitrageNode = document.getElementById("arbitrageTicker");
 
 						highestArbitrageNode.innerHTML = highestArbitrageTicker;
-
 					}
-
 				}
 
 /*START OF TRADING PAIR OPTIONS*/
@@ -121,6 +117,10 @@ export default class Calculations extends React.Component{
 						tradePairTwo.options[index].style.display="none";
 						tradePairThree.options[index].style.display="none";
 
+					}
+
+				if(tradePairOne !== "BTCUSD" && matchStringPairTwo === tradePairTwo.options[index].value.substring(3,6) && tradePairTwo.options[index].value !== "BTCUSD"){
+					tradePairTwo.options[index].style.display="none";
 					}
 				}
 			}
@@ -156,13 +156,11 @@ export default class Calculations extends React.Component{
 					}
 
 					for (var arrayIndex = 1; arrayIndex < tradePairThree.options.length; arrayIndex++){
-						
 						var noMatchArrayString = noMatchArray.toString();
 						var matchInTradePairThree = tradePairThree.options[arrayIndex].value.indexOf(noMatchArray);
-
+						
 						if (matchInTradePairThree < 0){
 						tradePairThree.options[arrayIndex].style.display="none";
-
 					}
 
 					for (var index = 1; index < tradePairThree.options.length; index++){
@@ -176,7 +174,6 @@ export default class Calculations extends React.Component{
 
 			tradePairThree.addEventListener("change", function(){
 				tradePairThreeSelected = this.value;
-
 			});
 
 			if(tradePairOneSelected !== "Select"){
@@ -204,14 +201,12 @@ export default class Calculations extends React.Component{
 				"Bid Rate: " + tradePairOneTicker[0]
 				+ "<br> Ask Rate: " + tradePairOneTicker[2];
 			}
-
 			if(tradePairTwoSelected in currencyInfoObject){
 				var tradePairTwoTicker = currencyInfoObject[tradePairTwoSelected];
 				tradePairTwoNode.innerHTML = "<div>" + tradePairTwoSelected +"</div>" +
 				"Bid Rate: " + tradePairTwoTicker[0] 
 				+ "<br> Ask Rate: " + tradePairTwoTicker[2];
 			}
-
 			if(tradePairThreeSelected in currencyInfoObject){
 				var tradePairThreeTicker = currencyInfoObject[tradePairThreeSelected];
 				tradePairThreeNode.innerHTML = "<div>" + tradePairThreeSelected +"</div>" +"Bid Rate: " + tradePairThreeTicker[0]
@@ -224,9 +219,7 @@ export default class Calculations extends React.Component{
 /*START OF TRIANGULAR ARBITRAGE*/
 
 
-
 			var selectedPairs = document.getElementById("tradePairOne").value + document.getElementById("tradePairTwo").value + document.getElementById("tradePairThree").value;
-
 			var subStringsArray = [];
 
 			for(var subStrings = 0; subStrings < selectedPairs.length; subStrings+=3){
@@ -234,9 +227,6 @@ export default class Calculations extends React.Component{
 			}
 
 			var triangularArbitrageCalculationsNode = document.getElementById("triangularArbitrageCalculations");
-
-
-
 			var initialUSD = 10000;
 			var convertThird = 0;
 			
@@ -246,31 +236,22 @@ export default class Calculations extends React.Component{
 					if(subStringsArray[0]===subStringsArray[2]){
 						var convertSecond = convertUSD*tradePairTwoTicker[2];
 
-
 						if(subStringsArray[1] === subStringsArray[4]){
 
 						}
 						if(subStringsArray[1] === subStringsArray[5]){
-							convertThird = convertSecond*tradePairThreeTicker[0];
-							console.log(convertThird);
-							
+							convertThird = convertSecond*tradePairThreeTicker[0];	
 						}
-
-
 					}
 
 					if(subStringsArray[0]===subStringsArray[3]){
 						var convertSecond = convertUSD/tradePairTwoTicker[2];
 
-						
 						if(subStringsArray[1] === subStringsArray[4]){
 
 						}
 						if(subStringsArray[1] === subStringsArray[5]){
 							convertThird = convertSecond*tradePairThreeTicker[0];
-							console.log(convertThird);
-
-							
 						}
 
 					}
@@ -282,12 +263,9 @@ export default class Calculations extends React.Component{
 						}
 						if(subStringsArray[1] === subStringsArray[3]){
 							convertThird = convertSecond*tradePairTwoTicker[0];
-							console.log(convertThird);
-
 						}
-
 					}
-						
+			
 					if(subStringsArray[0] === subStringsArray[5]){
 						var convertSecond = convertUSD/tradePairThreeTicker[2];
 
@@ -296,8 +274,6 @@ export default class Calculations extends React.Component{
 						}
 						if(subStringsArray[1] === subStringsArray[3]){
 							convertThird = convertSecond*tradePairTwoTicker[0];
-							console.log(convertThird);
-
 						}
 
 					}
@@ -311,7 +287,6 @@ export default class Calculations extends React.Component{
 
 				var convertInitial = convertUSD/tradePairOneTicker[2];
 				//this converts to whatever the first rate symbol is
-				console.log(convertInitial);
 
 				//QUESTION ETCBTC BTCUSD ETCUSD
 				//QUESTION RRTBTC BTCUSD RRTUSD
@@ -322,11 +297,8 @@ export default class Calculations extends React.Component{
 					if(subStringsArray[1] === subStringsArray[4]){
 						var convertBackUSD = convertSecond/tradePairThreeTicker[0];
 						convertThird = convertBackUSD * currencyInfoObject["BTCUSD"][2];
-						console.log(convertThird);
-
 					}
 					if(subStringsArray[1] === subStringsArray[5]){
-
 
 					}
 
@@ -338,8 +310,6 @@ export default class Calculations extends React.Component{
 					if(subStringsArray[1] === subStringsArray[2]){
 						var convertBackUSD = convertSecond/tradePairTwoTicker[0];
 						convertThird = convertBackUSD * currencyInfoObject["BTCUSD"][2];
-						console.log(convertThird);
-
 					}
 					if(subStringsArray[1] === subStringsArray[3]){
 
@@ -351,7 +321,6 @@ export default class Calculations extends React.Component{
 				}
 
 			}
-
 
 				var profitableToggle = document.getElementById("profitability");
 
@@ -482,10 +451,7 @@ export default class Calculations extends React.Component{
       					
       				</div>
 
-
-
 			</div>
-			
 		);
 	}
 }
