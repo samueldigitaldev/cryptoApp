@@ -1,9 +1,10 @@
+//This page conducts calculations
+
 import React from 'react';
 
 export default class Calculations extends React.Component{
 	constructor() {
 		super();
-
 	}
 	render() {
 	var bitfinexPairs = ["BTCUSD", "LTCUSD", "LTCBTC", "ETHUSD", "ETHBTC", "ETCUSD", "ETCBTC", "BFXUSD", "BFXBTC", "RRTUSD", "RRTBTC", "ZECUSD", "ZECBTC"]
@@ -85,6 +86,7 @@ export default class Calculations extends React.Component{
 						highestArbitrageNode.innerHTML = highestArbitrageTicker;
 					}
 				}
+/*END OF ARBITRAGE*/
 
 /*START OF TRADING PAIR OPTIONS*/
 				
@@ -212,13 +214,9 @@ export default class Calculations extends React.Component{
 				tradePairThreeNode.innerHTML = "<div>" + tradePairThreeSelected +"</div>" +"Bid Rate: " + tradePairThreeTicker[0]
 				+ "<br> Ask Rate: " + tradePairThreeTicker[2];
 			}
-
-
 /*END OF TRADING PAIR OPTIONS*/
 
 /*START OF TRIANGULAR ARBITRAGE*/
-
-
 			var selectedPairs = document.getElementById("tradePairOne").value + document.getElementById("tradePairTwo").value + document.getElementById("tradePairThree").value;
 			var subStringsArray = [];
 
@@ -231,14 +229,11 @@ export default class Calculations extends React.Component{
 			var convertThird = 0;
 			
 				if(subStringsArray[1] === "USD"){
-					var convertUSD = initialUSD/tradePairOneTicker[2]
+					var convertUSD = initialUSD/tradePairOneTicker[2];
 						//converts USD to all other currency
 					if(subStringsArray[0]===subStringsArray[2]){
 						var convertSecond = convertUSD*tradePairTwoTicker[2];
 
-						if(subStringsArray[1] === subStringsArray[4]){
-
-						}
 						if(subStringsArray[1] === subStringsArray[5]){
 							convertThird = convertSecond*tradePairThreeTicker[0];	
 						}
@@ -246,21 +241,13 @@ export default class Calculations extends React.Component{
 
 					if(subStringsArray[0]===subStringsArray[3]){
 						var convertSecond = convertUSD/tradePairTwoTicker[2];
-
-						if(subStringsArray[1] === subStringsArray[4]){
-
-						}
 						if(subStringsArray[1] === subStringsArray[5]){
 							convertThird = convertSecond*tradePairThreeTicker[0];
 						}
-
 					}
 					if(subStringsArray[0] === subStringsArray[4]){
 						var convertSecond = convertUSD*tradePairThreeTicker[2];
 
-						if(subStringsArray[1] === subStringsArray[2]){
-
-						}
 						if(subStringsArray[1] === subStringsArray[3]){
 							convertThird = convertSecond*tradePairTwoTicker[0];
 						}
@@ -269,27 +256,17 @@ export default class Calculations extends React.Component{
 					if(subStringsArray[0] === subStringsArray[5]){
 						var convertSecond = convertUSD/tradePairThreeTicker[2];
 
-						if(subStringsArray[1] === subStringsArray[2]){
-
-						}
 						if(subStringsArray[1] === subStringsArray[3]){
 							convertThird = convertSecond*tradePairTwoTicker[0];
 						}
-
 					}
-
 				}
 
 			if(subStringsArray[1] === "BTC"){
 
 				var convertUSD = initialUSD/currencyInfoObject["BTCUSD"][2];
 				//this is the number of bitcoins
-
 				var convertInitial = convertUSD/tradePairOneTicker[2];
-				//this converts to whatever the first rate symbol is
-
-				//QUESTION ETCBTC BTCUSD ETCUSD
-				//QUESTION RRTBTC BTCUSD RRTUSD
 
 				if(subStringsArray[0]===subStringsArray[2]){
 					var convertSecond = convertInitial*tradePairTwoTicker[0];
@@ -298,10 +275,6 @@ export default class Calculations extends React.Component{
 						var convertBackUSD = convertSecond/tradePairThreeTicker[0];
 						convertThird = convertBackUSD * currencyInfoObject["BTCUSD"][2];
 					}
-					if(subStringsArray[1] === subStringsArray[5]){
-
-					}
-
 				}
 
 				if(subStringsArray[0]===subStringsArray[4]){
@@ -311,15 +284,7 @@ export default class Calculations extends React.Component{
 						var convertBackUSD = convertSecond/tradePairTwoTicker[0];
 						convertThird = convertBackUSD * currencyInfoObject["BTCUSD"][2];
 					}
-					if(subStringsArray[1] === subStringsArray[3]){
-
-					}
-
 				}
-				if(subStringsArray[0]===subStringsArray[5]){
-
-				}
-
 			}
 
 				var profitableToggle = document.getElementById("profitability");
@@ -330,22 +295,15 @@ export default class Calculations extends React.Component{
 				}else{
 					var profitability = "No";
 					profitableToggle.className="notProfitable";
-				
 				}
 
 /*CLASS TOGGLE FOR GREEN AND RED*/
 				triangularArbitrageCalculationsNode.innerHTML = "<div>" + "Given $10,000 USD" + "</div>" + "<div>" + "After Exchange Value: " + convertThird + "</div>" ;
-
 				profitableToggle.innerHTML = "<div>" + "Profitable: " + profitability + "</div>";
-
 
 /*END OF TRIANGULAR ARBITRAGE*/
 
-
-/*END OF CALCULATION OF ARBITRAGE*/
-
 /*DETERMINE PROFITABILITY*/
-
 
 				var profitabilityNode = document.getElementById("profitOrLoss");
 				var arbitrageCalculationNode = document.getElementById("highestBidAskDifference");
@@ -356,7 +314,6 @@ export default class Calculations extends React.Component{
 						profitabilityNode.className = "notProfitable";
 						arbitrageCalculationNode.className = "notProfitable";
 						highestArbitrageNode.className = "notProfitable";
-
 					}
 					else{
 						profitabilityNode.innerHTML = "Profitable";
@@ -364,7 +321,6 @@ export default class Calculations extends React.Component{
 						arbitrageCalculationNode.className = "profitable";
 						highestArbitrageNode.className = "profitable";
 						alert("THIS IS PROFITABLE?!?!");
-
 					}
 /*END OF DETERMINE PROFITABILITY*/
 				}

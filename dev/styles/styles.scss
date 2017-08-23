@@ -75,12 +75,16 @@ h1 + p{
 	float: left;
 	color: white;
 	margin-top: -25px;
+	display: flex;
 
 }
 
 #tradePairOneNode, #tradePairTwoNode , #tradePairThreeNode {
 	float: left;
 	font-size: 18px;
+	flex-direction: row;
+	flex-wrap: wrap;
+
 }
 
 #tradePairTwoNode{
@@ -89,7 +93,7 @@ h1 + p{
 }
 
 #tradePairOneNode div, #tradePairTwoNode div, #tradePairThreeNode div{
-	font-size: 30px;
+	font-size: 25px;
 	color: green;
 	font-weight: bold;
 	letter-spacing: 3px;
@@ -98,7 +102,7 @@ h1 + p{
 
 #profitOrLoss, #highestBidAskDifference, #arbitrageTicker{
 	font-weight: bold;
-	font-size: 15px;
+	font-size: 12px;
 }
 
 .notProfitable{
@@ -145,5 +149,4 @@ h3{
 	clear:both;
 }
 
-
-
+/*RESPONSIVE VIEWPORT*/
